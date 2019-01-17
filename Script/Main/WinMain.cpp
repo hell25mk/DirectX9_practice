@@ -40,10 +40,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam){
 /// <summary>
 /// @brief メイン(ANSIとUnicode両方に対応するために_tを付けている)
 /// </summary>
-/// <param name="hInstance"></param>
-/// <param name="hPrevInstance"></param>
-/// <param name="lpszCmdLine"></param>
-/// <param name="nCmdShow"></param>
+/// <param name="hInstance">プログラムを識別するためのハンドル</param>
+/// <param name="hPrevInstance">Win16の産物のため常にnull</param>
+/// <param name="lpszCmdLine">コマンドラインから受け取った引数</param>
+/// <param name="nCmdShow">アプリケーションの初期表示方法</param>
 /// <returns></returns>
 int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpszCmdLine, int nCmdShow){
 
@@ -64,13 +64,13 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpsz
 	wc.hIcon = NULL;											//ウィンドウのアイコン（LoadImage()でつけてもよい）
 	wc.hInstance = hInstance;									//ウィンドウを作るためのインスタンスハンドルを指定
 	wc.lpfnWndProc = WndProc;									//ウィンドウから通知されたイベントを処理するための関数を指定
-	wc.lpszClassName = Window_ClassName;					//登録するウィンドウのクラス名
+	wc.lpszClassName = Window_ClassName;						//登録するウィンドウのクラス名
 	wc.lpszMenuName = NULL;										//メニューのリソースID
 	wc.style = NULL;											//ウィンドウクラスのスタイル
 
 	//ウィンドウの登録に失敗した場合終了させる
 	if(RegisterClass(&wc) == NULL){
-		return false;
+		return -1;
 	}
 #pragma endregion
 	
