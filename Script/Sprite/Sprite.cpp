@@ -137,6 +137,7 @@ void Sprite::Draw(const float x, const float y, const float ex, const float ey,c
 
 	if(texture == NULL){
 		//DXTRACE_MSG(_T("テクスチャが読み込まれていません"));
+		MessageBox(NULL, _T("テクスチャが読み込まれていません"), _T("エラー"), MB_OK);
 		return;
 	}
 
