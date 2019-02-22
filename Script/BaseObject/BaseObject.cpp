@@ -22,6 +22,7 @@ bool BaseObject::Initialize(HWND hWnd, HINSTANCE hInstance){
 	//Direct3Dオブジェクトを生成
 	pD3D = Direct3DCreate9(D3D_SDK_VERSION);
 	if(pD3D == nullptr){
+		MessageBox(NULL, _T("DirectXDeviceの初期化に失敗しました"), _T("エラー"), MB_OK);
 		//DXTRACE_MSG(_T("DirectXDeviceの初期化に失敗しました"));	//なぜかエラー出る
 
 		return false;
@@ -29,6 +30,7 @@ bool BaseObject::Initialize(HWND hWnd, HINSTANCE hInstance){
 
 	D3DDISPLAYMODE d3ddm;
 	if(FAILED(pD3D->GetAdapterDisplayMode(D3DADAPTER_DEFAULT, &d3ddm))){
+		MessageBox(NULL, _T("DirectX3DDeviceの初期化に失敗しました"), _T("エラー"), MB_OK);
 		//DXTRACE_MSG(_T("DirectX3DDeviceの初期化に失敗しました"));
 
 		return false;
@@ -50,6 +52,7 @@ bool BaseObject::Initialize(HWND hWnd, HINSTANCE hInstance){
 		D3DCREATE_SOFTWARE_VERTEXPROCESSING,
 		&d3dpp,
 		&pD3Ddevice))){
+		MessageBox(NULL, _T("3DDeviceObjectの初期化に失敗しました"), _T("エラー"), MB_OK);
 		//DXTRACE_MSG(_T("3DDeviceObjectの初期化に失敗しました"));
 
 		return false;
@@ -61,6 +64,7 @@ bool BaseObject::Initialize(HWND hWnd, HINSTANCE hInstance){
 	pD3Ddevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
 
 	if(FAILED(D3DXCreateSprite(pD3Ddevice, &pSprite))){
+		MessageBox(NULL, _T("SpriteObjectの作成に失敗しました"), _T("エラー"), MB_OK);
 		//DXTRACE_MSG(_T("SpriteObjectの作成に失敗しました"));
 
 		return false;
