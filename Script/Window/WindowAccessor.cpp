@@ -45,7 +45,10 @@ bool Window::SetBackgroundColor(const int color){
 /// <param name="r">赤の値</param>
 /// <param name="g">緑の値</param>
 /// <param name="b">青の値</param>
-/// <returns>成功true、失敗false</returns>
+/// <returns>
+/// @return true 成功
+/// false 失敗
+/// </returns>
 bool Window::SetBackgroundColor(const int r, const int g, const int b){
 
 	return true;

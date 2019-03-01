@@ -18,8 +18,10 @@ Window::~Window(){
 /// <summary>
 /// @brief ウィンドウを生成するクラス
 /// </summary>
-/// <returns>true 生成</returns>
-/// <returns>false 生成失敗</returns>
+/// <returns>
+/// @return true 生成
+/// @return false 生成失敗
+/// </returns>
 bool Window::WindowInit(){
 
 #pragma region どのようなウィンドウを作成するか
@@ -85,8 +87,10 @@ bool Window::WindowInit(){
 /// <summary>
 /// @brief ウィンドウの処理を行う
 /// </summary>
-/// <returns>true それ以外</returns>
-/// <returns>false QUITメッセージ</returns>
+/// <returns>
+/// @return true それ以外
+/// @return false QUITメッセージ
+/// </returns>
 bool Window::Process() const{
 
 	MSG msg;
