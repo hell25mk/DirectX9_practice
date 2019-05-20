@@ -19,13 +19,18 @@ public:
 	bool Process() const;
 
 #pragma region Accessor
-	bool SetWindowSize(const int wid, const int hig);
-	bool SetScreenMode(const bool flg);
-	bool SetWindowName(const TCHAR* name);
+	bool SetWindowSize(int wid, int hig);
+	bool SetScreenMode(bool flg);
+	bool SetWindowName(LPCTSTR name);
 	bool SetWindowIcon();
-	bool SetBackgroundColor(const int color);
-	bool SetBackgroundColor(const int r, const int g, const int b);
+	bool SetBackgroundColor(int color);
+	bool SetBackgroundColor(int r, int g, int b);
 #pragma endregion
+
+protected:
+	virtual LRESULT CALLBACK Procedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+	
+	virtual bool WindowClose();
 
 protected:
 	WNDCLASS wc;			//ìoò^Ç∑ÇÈèÓïÒÇäiî[Ç∑ÇÈç\ë¢ëÃ
@@ -37,6 +42,7 @@ protected:
 	int nCmdShow;
 	TCHAR windowName[Max_NameSize];
 
-};
+private:
+	static LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+};

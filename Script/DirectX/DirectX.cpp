@@ -1,12 +1,5 @@
 #include "DirectX.h"
 
-DirectX::DirectX(){
-}
-
-
-DirectX::~DirectX(){
-}
-
 /// <summary>
 /// @brief DirectXの初期化を行う
 /// </summary>
@@ -14,7 +7,7 @@ DirectX::~DirectX(){
 /// @return true　初期化成功
 /// @return false　初期化失敗
 /// </returns>
-bool DirectX::DirectXInit(){
+bool DirectX::DxInit(){
 	
 	//Direct3Dオブジェクトを生成
 	d3dObject.pD3D = Direct3DCreate9(D3D_SDK_VERSION);
@@ -74,7 +67,7 @@ bool DirectX::DirectXInit(){
 	return true;
 }
 
-bool DirectX::DirectXEnd(){
+bool DirectX::DxEnd(){
 	
 	ReleaseD3DObject(d3dObject.pSprite);
 	ReleaseD3DObject(d3dObject.pD3Ddevice);

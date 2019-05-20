@@ -11,7 +11,7 @@ public:
 	virtual bool Update() override;
 
 private:
-	DWORD lasttime;
+	DWORD lastTime;
 
 };
 

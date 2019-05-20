@@ -1,7 +1,7 @@
 #include "Window.h"
 //#include <string>
 
-bool Window::SetWindowSize(const int wid, const int hig){
+bool Window::SetWindowSize(int wid, int hig){
 
 	widthSize = wid;
 	heightSize = hig;
@@ -9,7 +9,7 @@ bool Window::SetWindowSize(const int wid, const int hig){
 	return true;
 }
 
-bool Window::SetScreenMode(const bool flg){
+bool Window::SetScreenMode(bool flg){
 
 	if(flg){
 		nCmdShow = SW_MAXIMIZE;
@@ -21,7 +21,7 @@ bool Window::SetScreenMode(const bool flg){
 	return true;
 }
 
-bool Window::SetWindowName(const TCHAR* name){
+bool Window::SetWindowName(LPCTSTR name){
 
 	_tcscpy_s(windowName, Max_NameSize, name);
 
@@ -34,7 +34,7 @@ bool Window::SetWindowIcon(){
 	return true;
 }
 
-bool Window::SetBackgroundColor(const int color){
+bool Window::SetBackgroundColor(int color){
 
 	return true;
 }
@@ -49,7 +49,7 @@ bool Window::SetBackgroundColor(const int color){
 /// @return true ê¨å˜
 /// false é∏îs
 /// </returns>
-bool Window::SetBackgroundColor(const int r, const int g, const int b){
+bool Window::SetBackgroundColor(int r, int g, int b){
 
 	return true;
 }

@@ -3,7 +3,7 @@
 void DxFontTestStart::Init(){
 
 	//オブジェクトをリストに追加
-	AppendObject(new DxFont(), -1, "font", true);
+	/*AppendObject(new DxFont(), -1, "font", true);
 
 	FontMove* fontMove;
 
@@ -17,6 +17,6 @@ void DxFontTestStart::Init(){
 	}
 
 	//自身を消去
-	RemoveObject(this);
+	RemoveObject(this);*/
 
 }

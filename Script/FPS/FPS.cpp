@@ -2,7 +2,7 @@
 
 void FPS::Init(){
 
-	lasttime = 0;
+	lastTime = 0;
 
 }
 
@@ -12,9 +12,9 @@ bool FPS::Update(){
 
 	//最後に行った処理からの時間を調べる
 	DWORD nTime = timeGetTime();		//システムが起動してからの時間を取得
-	DWORD rTime = nTime - lasttime;
+	DWORD rTime = nTime - lastTime;
 
-	lasttime = nTime;
+	lastTime = nTime;
 
 	if(rTime < Wait_Time){
 		Sleep(Wait_Time - rTime);

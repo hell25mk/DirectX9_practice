@@ -1,9 +1,5 @@
 #include "../DirectX/DirectX.h"
-#include "../BaseObject/BaseObject.h"
-#include "GameMain.h"
-#include "../Object/SoccerBall/SoccerBall.h"
-#include "../Font/DxFontTest.h"
-#include "../Object/Runner/Runner.h"
+#include "../Task/GameManager.h"
 
 /// <summary>
 /// @brief メイン(ANSIとUnicode両方に対応するために_tを付けている)
@@ -16,7 +12,8 @@
 int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpszCmdLine, int nCmdShow){
 
 #ifdef _DEBUG
-	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	//プログラム終了時に解放していないメモリがあれば警告を出す
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
 
 	//時間計測を1ミリ秒単位に設定
@@ -28,32 +25,21 @@ int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpsz
 		return -1;
 	}
 
-#pragma region DirectXの初期化
-	/*BaseObject game;
+	window.DxInit();
+	
+	GameManager gameManager;
 
-	game.Initialize(hWnd, hInstance);
+	gameManager.Init();
 
-	//
-	game.AppendObject(new TaskHead(), 0, true);
-	game.AppendObject(new TaskTail(), INT_MAX, true);
-
-	//1～INT_MAX-1の範囲で優先度を決める
-	game.AppendObject(new SoccerBall(), 1, true);
-	game.AppendObject(new Runner(), 2, true);
-	game.AppendObject(new DxFontTestStart(), 3, true);*/
-#pragma endregion
-
-#pragma region ウィンドウループ
 	while(window.Process()){
 
-
+		gameManager.Update();
+		gameManager.Draw();
 
 	}
-#pragma endregion
 
-#pragma region DirectXオブジェクトの解放
-	//game.Uninitialize();
-#pragma endregion
+	gameManager.Delete();
+	window.DxEnd();
 
 	return 0;
 }

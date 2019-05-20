@@ -135,9 +135,8 @@ void Sprite::Draw(const float x, const float y, const float ex, const float ey, 
 
 void Sprite::Draw(const float x, const float y, const float ex, const float ey,const float r, const int alpha) const{
 
-	if(texture == NULL){
-		//DXTRACE_MSG(_T("テクスチャが読み込まれていません"));
-		MessageBox(NULL, _T("テクスチャが読み込まれていません"), _T("エラー"), MB_OK);
+	if(!texture){
+		//MessageBox(NULL, _T("テクスチャが読み込まれていません"), _T("エラー"), MB_OK);
 		return;
 	}
 
@@ -161,11 +160,11 @@ void Sprite::Draw(const float x, const float y, const float ex, const float ey,c
 	D3DXMatrixTranslation(&mtrx2, x, y, 0.0f);
 	D3DXMatrixMultiply(&mtrx1, &mtrx1, &mtrx2);
 
-	pSprite->Begin(NULL);
+	d3dObject.pSprite->Begin(NULL);
 
-	pSprite->SetTransform(&mtrx1);
+	d3dObject.pSprite->SetTransform(&mtrx1);
 
-	pSprite->Draw(
+	d3dObject.pSprite->Draw(
 		texture->GetTexture(),				//スプライトに貼り付けたいテクスチャ
 		&drawRect,							//テクスチャの切り取り
 		NULL,								//画像の中心座標（支点）
@@ -173,6 +172,6 @@ void Sprite::Draw(const float x, const float y, const float ex, const float ey,c
 		(0x00FFFFFF | (BYTE)alpha << 24)	//ピクセルにこの値を掛け合わせ色合いと透明度を変更する
 	);
 
-	pSprite->End();
+	d3dObject.pSprite->End();
 	
 }

@@ -6,11 +6,11 @@
 class DirectX final: public Window{
 
 public:
-	DirectX();
-	~DirectX();
+	DirectX() = default;
+	~DirectX() = default;
 
-	bool DirectXInit();
-	bool DirectXEnd();
+	bool DxInit();
+	bool DxEnd();
 
 private:
 	Direct3DObject d3dObject;

@@ -55,7 +55,7 @@ bool Window::WindowInit(){
 		NULL,											//親ウィンドウのハンドル
 		NULL,											//メニューハンドル
 		hInstance,
-		NULL											//ウィンドウ作成時のイベントへ渡すデータのポインタ
+		this											//ウィンドウ作成時のイベントへ渡すデータのポインタ(メンバProcedureを使用するためthisポインタを入れている)
 		);
 
 	if(!hWnd){
@@ -79,31 +79,7 @@ bool Window::WindowInit(){
 	//ウィンドウの表示
 	ShowWindow(hWnd, nCmdShow);
 
-	MessageBox(NULL, _T("ショーウインドー"), _T("メッセージ"), MB_OK);
-
-	return true;
-}
-
-/// <summary>
-/// @brief ウィンドウの処理を行う
-/// </summary>
-/// <returns>
-/// @return true それ以外
-/// @return false QUITメッセージ
-/// </returns>
-bool Window::Process() const{
-
-	MSG msg;
-
-	//ウィンドウに通達されようとしているイベントを取得
-	if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)){
-		if(msg.message == WM_QUIT){
-			return false;
-		}
-
-		TranslateMessage(&msg);	//仮想キーメッセージを文字メッセージへ変換
-		DispatchMessage(&msg);	//ウィンドウイベントを通達
-	}
+	MessageBox(hWnd, _T("ショーウインドー"), _T("メッセージ"), MB_OK);
 
 	return true;
 }

@@ -15,7 +15,7 @@ Texture::Texture(LPCTSTR fileName){
 
 Texture::~Texture(){
 
-	D3D_RELEASE(texture);
+	ReleaseD3DObject(texture);
 
 }
 
@@ -26,9 +26,9 @@ Texture::~Texture(){
 /// <returns></returns>
 BOOL Texture::Load(LPCTSTR fileName){
 
-	D3D_RELEASE(texture);
+	ReleaseD3DObject(texture);
 
-	BOOL b = SUCCEEDED(D3DXCreateTextureFromFile(pD3Ddevice, fileName, &texture));
+	BOOL b = SUCCEEDED(D3DXCreateTextureFromFile(d3dObject.pD3Ddevice, fileName, &texture));
 
 	if(b){
 		D3DSURFACE_DESC desc;
